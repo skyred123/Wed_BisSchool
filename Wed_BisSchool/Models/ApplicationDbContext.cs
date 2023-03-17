@@ -19,10 +19,16 @@ namespace Wed_BisSchool.Models
         public static ApplicationDbContext Create()
         {
             ApplicationDbContext dbContext= new ApplicationDbContext();
-            dbContext.Sources.Include(e=>e.Category).Load();
+            dbContext.Sources.Include(e=>e.Lecturer).Include(e=>e.Category).Load();
             return dbContext;
+        }
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            base.OnModelCreating(modelBuilder);
+            modelBuilder.Entity<Attendance>().HasRequired(a => a.Cource).WithMany().WillCascadeOnDelete(false);
         }
         public DbSet<Cource> Sources { get; set; }
         public DbSet<Category> Categories { get; set; }
+        public DbSet<Attendance> Attendances { get; set; }
     }
 }

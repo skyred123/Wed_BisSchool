@@ -29,7 +29,11 @@ namespace Wed_BisSchool.Controllers
         // GET: Caterorys/Create
         public ActionResult Create()
         {
-            return View();
+            if (User.Identity.IsAuthenticated)
+            {
+                return View();
+            }
+            return RedirectToAction("Index", "Home");
         }
 
         // POST: Caterorys/Create
@@ -68,10 +72,14 @@ namespace Wed_BisSchool.Controllers
         {
             try
             {
-                var category1 = dbContext.Categories.FirstOrDefault(p => p.Id == id);
-                dbContext.Categories.Remove(category1);
-                dbContext.SaveChanges();
-                return RedirectToAction("Index", "Caterorys");
+                if (User.Identity.IsAuthenticated)
+                {
+                    var category1 = dbContext.Categories.FirstOrDefault(p => p.Id == id);
+                    dbContext.Categories.Remove(category1);
+                    dbContext.SaveChanges();
+                    return RedirectToAction("Index", "Caterorys");
+                }
+                return RedirectToAction("Index", "Home");
             }
             catch
             {
