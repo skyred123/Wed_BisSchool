@@ -200,8 +200,13 @@
     <Compile Include="Migrations\202303170828042_update Attendances.designer.cs">
       <DependentUpon>202303170828042_update Attendances.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202303240915426_addFollowing.cs" />
+    <Compile Include="Migrations\202303240915426_addFollowing.designer.cs">
+      <DependentUpon>202303240915426_addFollowing.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Attendance.cs" />
+    <Compile Include="Models\Following.cs" />
     <Compile Include="ViewModel\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\Category.cs" />
@@ -308,6 +313,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202303170828042_update Attendances.resx">
       <DependentUpon>202303170828042_update Attendances.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202303240915426_addFollowing.resx">
+      <DependentUpon>202303240915426_addFollowing.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

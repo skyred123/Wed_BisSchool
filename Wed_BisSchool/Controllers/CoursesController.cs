@@ -23,11 +23,7 @@ namespace Wed_BisSchool.Controllers
             
             if (User.Identity.IsAuthenticated)
             {
-                var list = dbContext.Sources.ToList().Where(e=>e.LecturerId == User.Identity.GetUserId());
-                if (list.Count() == 0)
-                {
-                    return View();
-                }
+                var list = dbContext.Sources.ToList();
                 return View(list);
             }
             return RedirectToAction("Index", "Home");

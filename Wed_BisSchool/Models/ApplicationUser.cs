@@ -1,4 +1,6 @@
-﻿using System.Data.Entity;
+﻿using System.Collections;
+using System.Collections.Generic;
+using System.Data.Entity;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
@@ -10,6 +12,13 @@ namespace Wed_BisSchool.Models
     public class ApplicationUser : IdentityUser
     {
         public string Name { get; set; }
+        public ApplicationUser()
+        {
+            Followers = new List<Following>();
+            Followees = new List<Following>();
+        }
+        public ICollection<Following> Followers { get; set; }  
+        public ICollection<Following> Followees { get; set; }
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
