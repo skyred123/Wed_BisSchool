@@ -6,19 +6,29 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Wed_BisSchool.Models;
+using System.Data.Entity;
+using Wed_BisSchool.ViewModel;
 
 namespace Wed_BisSchool.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly ApplicationDbContext dbContext;
+        public HomeController()
+        {
+            dbContext = ApplicationDbContext.Create();
+        }
         public ActionResult Index()
         {
-            var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(ApplicationDbContext.Create()));
-            var UserManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(ApplicationDbContext.Create()));
-            var role = new IdentityRole();
-            role.Name = "Test";
-            roleManager.Create(role);
-            return View();
+
+            var upcomingCources = dbContext.Sources.ToList();
+
+            var viewModel = new CourcesViewModel()
+            {
+                upcomingCource = upcomingCources,
+                ShowAction = User.Identity.IsAuthenticated,
+            };
+            return View(viewModel);
         }
     }
 }

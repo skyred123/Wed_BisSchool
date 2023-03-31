@@ -1,4 +1,4 @@
-﻿namespace Wed_BisSchool.Migrations
+﻿/*namespace Wed_BisSchool.Migrations
 {
     using System;
     using System.Data.Entity.Migrations;
@@ -7,18 +7,18 @@
     {
         public override void Up()
         {
-            CreateTable(
-                "dbo.Attendances",
+             "dbo.Attendances",
                 c => new
                     {
-                        UserId = c.String(nullable: false, maxLength: 128),
                         CourceId = c.Int(nullable: false),
+                        UserId = c.String(nullable: false, maxLength: 128),
+                        Attendee_Id = c.String(maxLength: 128),
                     })
-                .PrimaryKey(t => t.UserId)
+                .PrimaryKey(t => new { t.CourceId, t.UserId })
+                .ForeignKey("dbo.AspNetUsers", t => t.Attendee_Id)
                 .ForeignKey("dbo.Cources", t => t.CourceId)
-                .ForeignKey("dbo.AspNetUsers", t => t.UserId)
                 .Index(t => t.CourceId)
-                .Index(t => t.UserId);
+                .Index(t => t.Attendee_Id);
             
         }
         
@@ -32,3 +32,4 @@
         }
     }
 }
+*/

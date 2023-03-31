@@ -9,6 +9,7 @@ namespace Wed_BisSchool.Models
     public class Cource
     {
         public int Id { get; set; }
+        public bool IsCanceled { get; set; }
         [Required]
         public string LecturerId { get; set; }
         [Required]

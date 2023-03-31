@@ -27,7 +27,7 @@ namespace Wed_BisSchool.Models
             base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<Attendance>().HasRequired(a => a.Cource).WithMany().WillCascadeOnDelete(false);
             //modelBuilder.Entity<Following>().HasKey(e=> new {e.FollowerId,e.FolloweeId});
-            modelBuilder.Entity<ApplicationUser>().HasMany(u=>u.Followers).WithRequired(f=>f.Followees).WillCascadeOnDelete(false);
+            modelBuilder.Entity<ApplicationUser>().HasMany(u=>u.Followers).WithRequired(f=>f.Followee).WillCascadeOnDelete(false);
             modelBuilder.Entity<ApplicationUser>().HasMany(u => u.Followees).WithRequired(f => f.Follower).WillCascadeOnDelete(false);
         }
         public DbSet<Cource> Sources { get; set; }

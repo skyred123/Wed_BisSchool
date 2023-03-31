@@ -10,7 +10,13 @@
             <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">@User.Identity.GetUserName()<span class="caret"></span></a>
             <ul class="dropdown-menu">
                 <li>
-                    @Html.ActionLink("Course","Index","Courses")
+                    @Html.ActionLink("My Upcoming Courses", "Mine", "Courses")
+                </li>
+                <li>
+                    @Html.ActionLink("Course Im Going", "Attending", "Courses")
+                </li>
+                <li>
+                    @Html.ActionLink("Lecture Im Flowing", "Following", "Courses")
                 </li>
                 <li>
                     @Html.ActionLink("Manager", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })

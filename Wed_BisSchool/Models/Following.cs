@@ -17,6 +17,6 @@ namespace Wed_BisSchool.Models
         public string FolloweeId { get; set; }
 
         public ApplicationUser Follower { get; set; }
-        public ApplicationUser Followees { get; set; }
+        public ApplicationUser Followee { get; set; }
     }
 }

@@ -8,6 +8,7 @@ using Wed_BisSchool.Models;
 
 namespace Wed_BisSchool.Controllers
 {
+    [Authorize]
     public class CaterorysController : Controller
     {
         private readonly ApplicationDbContext dbContext;
@@ -42,10 +43,12 @@ namespace Wed_BisSchool.Controllers
         {
             try
             {
+
                 if (dbContext.Categories.FirstOrDefault(p => p.Name == category.Name) != null)
                 {
                     return RedirectToAction("Index", "Home");
                 }
+                category.Id = Convert.ToByte(dbContext.Categories.ToList().Count()+1);
                 dbContext.Categories.Add(category);
                 dbContext.SaveChanges();
                 return RedirectToAction("Index", "Caterorys");

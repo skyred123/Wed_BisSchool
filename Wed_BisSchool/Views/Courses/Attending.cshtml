@@ -1,0 +1,31 @@
+﻿@model Wed_BisSchool.ViewModel.CourcesViewModel
+@{
+    ViewBag.Title = "Attending";
+}
+
+<h2>Attending</h2>
+<table>
+    @foreach (var item in Model.upcomingCource)
+    {
+        <tr class="" style="margin:10px">
+            <td>
+                @Html.DisplayFor(modelItem => item.Lecturer.Name)
+                <button data-course-id="@item.LecturerId" class="btn btn-default btn-sm js-toggle-following">Follow</button>
+
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Place)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Category.Name)
+            </td>
+            <td>
+                <button data-course-id="@item.Id" class="btn btn-default btn-sm js-toggle-attendacence">Going?</button>
+            </td>
+        </tr>
+    }
+</table>
+
